@@ -1,0 +1,26 @@
+# API (Backend)
+pFI-api/target/
+pFI-api/.idea/
+pFI-api/*.iml
+pFI-api/.settings/
+pFI-api/.classpath
+pFI-api/.project
+pFI-api/.env
+
+# UI (Frontend)
+pFI-ui/node_modules/
+pFI-ui/.env
+pFI-ui/.env.local
+pFI-ui/build/
+pFI-ui/dist/
+pFI-ui/.next/
+pFI-ui/.DS_Store
+pFI-ui/npm-debug.log*
+pFI-ui/yarn-debug.log*
+pFI-ui/yarn-error.log*
+
+# General
+.DS_Store
+.env
+.idea/
+*.log
