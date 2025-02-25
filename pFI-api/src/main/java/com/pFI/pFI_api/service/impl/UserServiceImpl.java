@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
         User user = UserMapper.mapToUser(userDTO);
         User savedUser = userRepo.save(user);
 
+
         return UserMapper.mapToUserDTO(savedUser);
     }
 
