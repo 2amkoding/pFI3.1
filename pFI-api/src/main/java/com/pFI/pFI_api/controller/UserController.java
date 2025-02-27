@@ -1,7 +1,9 @@
 package com.pFI.pFI_api.controller;
 
 import com.pFI.pFI_api.dto.UserDTO;
+import com.pFI.pFI_api.dto.UserRegistrationDTO;
 import com.pFI.pFI_api.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -51,4 +53,11 @@ public class UserController {
         userService.deleteUser(userId);
         return ResponseEntity.ok("User deleted sucessfully.");
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody UserRegistrationDTO dto) {
+        return ResponseEntity.ok(userService.registerUser(dto));
+    }
+
+
 }

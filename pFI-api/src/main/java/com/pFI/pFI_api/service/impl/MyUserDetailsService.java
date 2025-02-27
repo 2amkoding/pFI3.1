@@ -5,6 +5,8 @@ import com.pFI.pFI_api.mapper.UserMapper;
 import com.pFI.pFI_api.repository.UserRepo;
 import com.pFI.pFI_api.entity.UserPrincipal;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,20 +14,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@Slf4j
+@RequiredArgsConstructor
 public class MyUserDetailsService implements UserDetailsService {
-
-    //@Autowired
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
 
     @Override
-    public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUserName(username);
-        if(user==null) {
-            System.out.println("User Not Found");
-            throw new UsernameNotFoundException("user not found");
-        }
-
-        return new UserPrincipal(user);
+    public UserDetails loadUserByUsername (String username){
+        return userRepo.findByUsername(username)
+                .map(UserPrincipal::new)
+                .orElseThrow(() -> {
+                    log.error("User not found: {}", username);
+                    return new UsernameNotFoundException("User not found");
+                });
     }
 }

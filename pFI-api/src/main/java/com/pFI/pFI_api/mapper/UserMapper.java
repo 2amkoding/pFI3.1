@@ -18,23 +18,22 @@ public class UserMapper {
     }
 
     public static User mapToUser(UserDTO userDTO) {
-        return new User(
-                userDTO.getId(),
-                userDTO.getFirstName(),
-                userDTO.getLastName(),
-                userDTO.getEmail(),
-                userDTO.getUsername()
-        );
+        return User.builder()
+                .id(userDTO.getId())
+                .firstName(userDTO.getFirstName())
+                .lastName(userDTO.getLastName())
+                .email(userDTO.getEmail())
+                .username(userDTO.getUsername())
+                .build();
     }
 
     public static User mapToRegistration(UserRegistrationDTO dto) {
-        return new User(
-                null,
-                dto.getFirstName(),
-                dto.getLastName(),
-                dto.getEmail(),
-                dto.getUsername(),
-                dto.getPassword()
-        );
+        return User.builder()
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .email(dto.getEmail())
+                .username(dto.getUsername())
+                .password(dto.getPassword())
+                .build();
     }
 }

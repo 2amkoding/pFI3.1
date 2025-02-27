@@ -1,8 +1,11 @@
 package com.pFI.pFI_api.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.processing.Pattern;
-import org.springframework.http.converter.json.GsonBuilderUtils;
+import jakarta.validation.constraints.Pattern;
+
 
 @Data
 @Builder
