@@ -21,6 +21,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class User {
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ledger> ledgers = new ArrayList<>();
 
     @Id
