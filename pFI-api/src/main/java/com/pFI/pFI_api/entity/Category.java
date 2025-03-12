@@ -32,7 +32,7 @@ public class Category {
     @Column(name = "createdAt", nullable = false, updatable = false)
     private LocalDateTime created_at;
 
-    @Column(name = updated_at)
+    @Column(name = "updated_at")
     private LocalDateTime updated_at;
 
 }

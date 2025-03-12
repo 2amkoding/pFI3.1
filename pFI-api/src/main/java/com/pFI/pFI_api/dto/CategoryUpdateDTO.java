@@ -3,11 +3,17 @@ package com.pFI.pFI_api.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class CategoryDTO {
 
-
-    private Long id;
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class CategoryUpdateDTO {
 
     @NotBlank(message = "category name cannot be empty")
     @Size(max = 50, message = "Category name cannot exceed 50 characters")
@@ -19,5 +25,4 @@ public class CategoryDTO {
     @NotBlank(message = "Color code cannot be empty")
     @Pattern(regexp = "^#[0-9A-Fa-f]{6}$", message = "Color code must be a valid hex color")
     private String colorCode;
-
 }
