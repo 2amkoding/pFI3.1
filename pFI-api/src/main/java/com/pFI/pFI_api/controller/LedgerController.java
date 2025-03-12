@@ -21,7 +21,7 @@ public class LedgerController {
 
     private final LedgerService ledgerService;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<LedgerDTO>> getAllLedgers() {
         return ResponseEntity.ok(ledgerService.getAllLedgers());
     }
