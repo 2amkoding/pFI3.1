@@ -31,7 +31,7 @@ public class Ledger {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
-    private Long categoryId;
+    private Category category;
 
     @Column(name = "isEssential", nullable = false)
     private Boolean isEssential;

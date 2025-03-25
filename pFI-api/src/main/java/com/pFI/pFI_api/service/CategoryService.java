@@ -59,4 +59,9 @@ public class CategoryService {
         return false;
     }
 
+    public Category findCategoryById(Long  id) {
+        return categoryRepo.findById(id)
+                .orElseThrow(()  -> new IllegalArgumentException("Category  not found with ID: " + id));
+    }
+
 }
