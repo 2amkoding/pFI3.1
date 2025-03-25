@@ -1,5 +1,6 @@
 package com.pFI.pFI_api.dto;
 
+import com.pFI.pFI_api.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class LedgerDTO {
     private Long id;
     private String name;
     private YearMonth month;
-    private String category;
+    private Category category;
     private Boolean isEssential;
     private BigDecimal amount;
     private Long userId;

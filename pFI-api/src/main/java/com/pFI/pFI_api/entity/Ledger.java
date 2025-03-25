@@ -29,8 +29,9 @@ public class Ledger {
     @Column(name = "month", nullable = false)
     private YearMonth month;
 
-    @Column(name = "category", nullable = false, length = 50)
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Long categoryId;
 
     @Column(name = "isEssential", nullable = false)
     private Boolean isEssential;

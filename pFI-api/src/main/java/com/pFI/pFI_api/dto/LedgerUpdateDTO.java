@@ -17,7 +17,7 @@ public class LedgerUpdateDTO {
 
     private String name;
     private YearMonth month;
-    private String category;
+    private Long categoryId;
     private Boolean isEssential;
 
     @DecimalMin(value = "0.01", message = "Amount must be greater than 0")

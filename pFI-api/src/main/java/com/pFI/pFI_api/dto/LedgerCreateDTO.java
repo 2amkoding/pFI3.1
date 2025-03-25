@@ -1,5 +1,6 @@
 package com.pFI.pFI_api.dto;
 
+import com.pFI.pFI_api.entity.Category;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +25,7 @@ public class LedgerCreateDTO {
     private YearMonth month;
 
     @NotNull(message = "Category is required")
-    private String category;
+    private Category category;
 
     @NotNull(message = "Essential flag is required")
     private Boolean isEssential;

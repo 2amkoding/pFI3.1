@@ -3,8 +3,10 @@ package com.pFI.pFI_api.service;
 import com.pFI.pFI_api.dto.LedgerCreateDTO;
 import com.pFI.pFI_api.dto.LedgerDTO;
 import com.pFI.pFI_api.dto.LedgerUpdateDTO;
+import com.pFI.pFI_api.entity.Category;
 import com.pFI.pFI_api.entity.Ledger;
 import com.pFI.pFI_api.mapper.LedgerMapper;
+import com.pFI.pFI_api.repository.CategoryRepo;
 import com.pFI.pFI_api.repository.LedgerRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class LedgerService {
 
     private final LedgerRepo ledgerRepo;
     private final LedgerMapper ledgerMapper;
+    private final CategoryRepo categoryRepo;
 
     public List<LedgerDTO> getAllLedgers() {
         return ledgerRepo.findAll().stream()
@@ -66,7 +69,9 @@ public class LedgerService {
                 .collect(Collectors.toList());
     }
 
-    public List<LedgerDTO> findByUserIdAndCategory(Long userId, String category) {
+    public List<LedgerDTO> findByUserIdAndCategoryId(Long userId, Long categoryId) {
+        Category category = categoryRepo.findById(categoryId)
+                .orElseThrow(() -> new IllegalArgumentException("Category not found w ID: ", categoryId));
         return ledgerRepo.findByUserIdAndCategory(userId, category).stream()
                 .map(ledgerMapper::toDTO)
                 .collect(Collectors.toList());
