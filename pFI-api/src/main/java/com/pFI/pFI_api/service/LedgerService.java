@@ -71,7 +71,7 @@ public class LedgerService {
 
     public List<LedgerDTO> findByUserIdAndCategoryId(Long userId, Long categoryId) {
         Category category = categoryRepo.findById(categoryId)
-                .orElseThrow(() -> new IllegalArgumentException("Category not found w ID: ", categoryId));
+                .orElseThrow(() -> new IllegalArgumentException("Category not found w ID: " + categoryId));
         return ledgerRepo.findByUserIdAndCategory(userId, category).stream()
                 .map(ledgerMapper::toDTO)
                 .collect(Collectors.toList());

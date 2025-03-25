@@ -1,7 +1,10 @@
 package com.pFI.pFI_api.controller;
 
+import com.pFI.pFI_api.dto.CategoryCreateDTO;
 import com.pFI.pFI_api.dto.CategoryDTO;
+import com.pFI.pFI_api.dto.CategoryUpdateDTO;
 import com.pFI.pFI_api.entity.Category;
+import com.pFI.pFI_api.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
@@ -25,7 +28,7 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id)
                 .map(ResponseEntity::ok)
@@ -51,7 +54,7 @@ public class CategoryController {
     @PutMapping("/{id}")
     public ResponseEntity<CategoryDTO> updateCategory(
             @PathVariable Long id,
-            @Valid @RequestBody CategoryUpdateDTO  categoryUpdateDTO {
+            @Valid @RequestBody CategoryUpdateDTO categoryUpdateDTO) {
         return categoryService.updateCategory(id, categoryUpdateDTO)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found w ID"));

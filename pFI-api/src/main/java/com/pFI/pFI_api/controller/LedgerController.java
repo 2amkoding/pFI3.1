@@ -50,11 +50,11 @@ public class LedgerController {
         }
     }
 
-    @GetMapping("/user/{userId}/category/{category}")
+    @GetMapping("/user/{userId}/category/{categoryId}")
     public ResponseEntity<List<LedgerDTO>> getLedgerByUserIdAndCategory(
             @PathVariable Long userId,
-            @PathVariable String category) {
-        List<LedgerDTO> ledgers = ledgerService.findByUserIdAndCategory(userId, category);
+            @PathVariable Long categoryId) {
+        List<LedgerDTO> ledgers = ledgerService.findByUserIdAndCategoryId(userId, categoryId);
         return ResponseEntity.ok(ledgers);
     }
 

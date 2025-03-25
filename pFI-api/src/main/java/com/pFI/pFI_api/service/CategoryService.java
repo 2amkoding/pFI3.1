@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,9 +58,18 @@ public class CategoryService {
         return false;
     }
 
-    public Category findCategoryById(Long  id) {
+    public Category findCategoryById(Long id) {
         return categoryRepo.findById(id)
                 .orElseThrow(()  -> new IllegalArgumentException("Category  not found with ID: " + id));
+    }
+
+    public Optional<CategoryDTO> getCategoryByName(String name)  {
+        return categoryRepo.findByName(name)
+                .map(categoryMapper::toDTO);
+    }
+
+    public boolean existsByName(String name) {
+        return categoryRepo.existsByName(name);
     }
 
 }

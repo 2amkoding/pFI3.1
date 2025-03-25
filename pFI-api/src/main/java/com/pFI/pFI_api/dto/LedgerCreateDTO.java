@@ -25,7 +25,7 @@ public class LedgerCreateDTO {
     private YearMonth month;
 
     @NotNull(message = "Category is required")
-    private Category category;
+    private Long categoryId;
 
     @NotNull(message = "Essential flag is required")
     private Boolean isEssential;
