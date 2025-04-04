@@ -1,14 +1,15 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { LoginForm } from '@/components/login-form'
 import './App.css'
-import Hello from './Hello'
 
 function App() {
-
-
   return (
-    <>
-
-        <Hello />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/" element={<Navigate to="/login" />} /> 
+      </Routes>
+    </BrowserRouter>
   )
 }
 
